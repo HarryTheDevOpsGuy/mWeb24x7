@@ -76,6 +76,7 @@ jobs:
           git config user.name "${{ github.actor }}"
           git pull ${REMOTE}
           git checkout ${LOG_BRANCH}
+          git pull origin ${LOG_BRANCH}
           git add .
           git status
           FCOUNT="$(git diff --name-only --cached|wc -l)"
