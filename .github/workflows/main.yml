@@ -44,6 +44,7 @@ jobs:
         #LOOP_REPEAT_INTERVAL: '10'
         OUTPUT_LOG_DIR: '/tmp/logdata'
         LOG_BRANCH: mweb24x7
+        NAME: "${GITHUB_ACTION}_hp"
         
 
     # Steps represent a sequence of tasks that will be executed as part of the job
@@ -56,6 +57,7 @@ jobs:
           git clone ${REMOTE} ${OUTPUT_LOG_DIR}
           cd ${OUTPUT_LOG_DIR}
           git checkout ${LOG_BRANCH} || git checkout -b ${LOG_BRANCH}
+          echo "NAME - $NAME
       - uses: actions/checkout@v2
         with:
           repository: HarryTheDevOpsGuy/mConfigs
