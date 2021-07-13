@@ -26,5 +26,17 @@ sudo chmod +x /usr/bin/mweb24x7
 -v               Display version
 ```
 
-
 Create Slack Bot for your Applications : https://slack.com/intl/en-in/help/articles/115005265703-Create-a-bot-for-your-workspace
+
+### Want to Monitor your website uptime free of cost.
+**Please submit domain details** :> [Google Form Link Here ](https://forms.gle/fLz2MauSVyu7XvBWA)
+
+- it's free of cost.
+- it will check your domain status every 1 minutes.
+- if your domain/ site / url is down it will notify you at your email.
+- you can integrate with slack in easy steps.
+
+####  you can support us by contribution / Donations
+
+--
+Thanks
