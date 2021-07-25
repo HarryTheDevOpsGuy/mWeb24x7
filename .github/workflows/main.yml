@@ -47,7 +47,11 @@ jobs:
         #LOOP_REPEAT_INTERVAL: '10'
         OUTPUT_LOG_DIR: '/tmp/logdata'
         LOG_BRANCH: mweb24x7
-        NAME: "${GITHUB_ACTION}_hp"
+        # mCert variables
+        # for Debug only
+        #FORCE_EMAIL_TO: HarryTheDevOpsGuy@gmail.com
+        # TO read 1-10 raws from gsheet.
+        LINE_RANGE: "1,10p"
         
 
     # Steps represent a sequence of tasks that will be executed as part of the job
