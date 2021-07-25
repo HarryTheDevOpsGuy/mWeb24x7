@@ -49,7 +49,7 @@ jobs:
         LOG_BRANCH: mweb24x7
         # mCert variables
         # for Debug only
-        FORCE_EMAIL_TO: HarryTheDevOpsGuy@gmail.com
+        #FORCE_EMAIL_TO: HarryTheDevOpsGuy@gmail.com
         # TO read 1-10 raws from gsheet.
         LINE_RANGE: "1,10p"
         
@@ -74,7 +74,7 @@ jobs:
       - name: Check Website Status
         run: |
           chmod +x /usr/bin/mweb24x7
-          mweb24x7 -g "${GOOGLE_SHEET}" -m 15 -V 
+          mweb24x7 -g "${GOOGLE_SHEET}" -m 8 -V 
 
           
       - name: Push changes to repo
