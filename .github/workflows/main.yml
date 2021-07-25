@@ -41,7 +41,7 @@ jobs:
         EMAIL_FROM: mcloudautomation@gmail.com
         EMAIL_MODE: SENDGRID
         REPLY_EMAIL_ADDRESS: 'Harry <HarryTheDevOpsGuy@gmail.com>'
-        EMAIL_NOTIFICATION: 'true'
+        EMAIL_NOTIFICATION: 'false'
         SLACK_ALERT_REPEAT_INTERVAL: '120'
         EMAIL_ALERT_REPEAT_INTERVAL: '180'
         LOOP_REPEAT_INTERVAL: '10'
