@@ -49,7 +49,7 @@ jobs:
         LOG_BRANCH: mweb24x7
         # mCert variables
         # for Debug only
-        #FORCE_EMAIL_TO: HarryTheDevOpsGuy@gmail.com
+        FORCE_EMAIL_TO: HarryTheDevOpsGuy@gmail.com
         # TO read 1-10 raws from gsheet.
         LINE_RANGE: "1,10p"
         
