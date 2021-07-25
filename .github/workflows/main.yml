@@ -43,8 +43,8 @@ jobs:
         REPLY_EMAIL_ADDRESS: 'Harry <HarryTheDevOpsGuy@gmail.com>'
         EMAIL_NOTIFICATION: 'true'
         SLACK_ALERT_REPEAT_INTERVAL: '120'
-        EMAIL_ALERT_REPEAT_INTERVAL: '180'
-        #LOOP_REPEAT_INTERVAL: '10'
+        EMAIL_ALERT_REPEAT_INTERVAL: '600'
+        LOOP_REPEAT_INTERVAL: '10'
         OUTPUT_LOG_DIR: '/tmp/logdata'
         LOG_BRANCH: mweb24x7
         # mCert variables
