@@ -167,7 +167,7 @@ jobs:
   
   # Final Job to trigger workflow
   TriggerWorkflow:
-    if: always()
+    #if: always()
     needs: [mWeb-basic, mWeb-basic-1]
     runs-on: ubuntu-latest
     steps:
