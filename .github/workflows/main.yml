@@ -74,7 +74,7 @@ jobs:
       - name: Check Website Status
         run: |
           chmod +x /usr/bin/mweb24x7
-          mweb24x7 -g "${GOOGLE_SHEET}" -m 9 -V 
+          mweb24x7 -g "${GOOGLE_SHEET}" -m 2 -V 
 
           
       - name: Push changes to repo
@@ -96,3 +96,9 @@ jobs:
           else 
             echo "NO Changed"
           fi
+          
+          # Trigger workflow
+          curl --location --request POST 'https://api.github.com/repos/HarryTheDevOpsGuy/mWeb24x7/actions/workflows/11199972/dispatches' \
+          --header "Authorization: Bearer ${{ secrets.GH_PERSONAL_TOKEN }}" \
+          --header 'Content-Type: application/json' \
+          --data-raw '{ "ref": "master" }'
