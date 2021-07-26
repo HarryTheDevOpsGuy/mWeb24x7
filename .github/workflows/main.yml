@@ -123,7 +123,7 @@ jobs:
         EMAIL_ALERT_REPEAT_INTERVAL: '600'
         LOOP_REPEAT_INTERVAL: '10'
         OUTPUT_LOG_DIR: '/tmp/logdata'
-        LOG_BRANCH: ${{env.GITHUB_JOB}}
+        LOG_BRANCH: ${{github.job}}
         # mCert variables
         # for Debug only
         #FORCE_EMAIL_TO: HarryTheDevOpsGuy@gmail.com
