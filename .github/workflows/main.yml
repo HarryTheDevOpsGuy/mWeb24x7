@@ -97,8 +97,8 @@ jobs:
             echo "NO Changed"
           fi
           
-          # Trigger workflow
-          curl --location --request POST 'https://api.github.com/repos/HarryTheDevOpsGuy/mWeb24x7/actions/workflows/11199972/dispatches' \
-          --header "Authorization: Bearer ${{ secrets.GH_PERSONAL_TOKEN }}" \
-          --header 'Content-Type: application/json' \
-          --data-raw '{ "ref": "master" }'
+      - name: Invoke workflow without inputs
+        uses: benc-uk/workflow-dispatch@v1
+        with:
+          workflow: Monitor Site Status v1
+          token: ${{ secrets.GH_PERSONAL_TOKEN }}
