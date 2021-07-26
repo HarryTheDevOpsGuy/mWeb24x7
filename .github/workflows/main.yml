@@ -74,7 +74,7 @@ jobs:
       - name: Check Website Status
         run: |
           chmod +x /usr/bin/mweb24x7
-          mweb24x7 -g "${GOOGLE_SHEET}" -m 5 -t 2 -V 
+          mweb24x7 -g "${GOOGLE_SHEET}" -m 20 -t 8 -V 
 
           
       - name: Push changes to repo
@@ -143,7 +143,7 @@ jobs:
       - name: Check Website Status
         run: |
           chmod +x /usr/bin/mweb24x7
-          mweb24x7 -g "${GOOGLE_SHEET}" -m 5 -t 2 -V 
+          mweb24x7 -g "${GOOGLE_SHEET}" -m 20 -t 8 -V 
           
       - name: Push changes to repo
         run: |
