@@ -6,9 +6,9 @@ concurrency: mweb24x7
 
 # Controls when the workflow will run
 on:
-  schedule:
-    # * is a special character in YAML so you have to quote this string
-    - cron:  '*/8 * * * *'
+#   schedule:
+#     # * is a special character in YAML so you have to quote this string
+#     - cron:  '*/8 * * * *'
 
   # Triggers the workflow on push or pull request events but only for the master branch
 #   push:
@@ -100,5 +100,5 @@ jobs:
       - name: Invoke workflow without inputs
         uses: benc-uk/workflow-dispatch@v1
         with:
-          workflow: Monitor Site Status v1
+          workflow: ${GITHUB_WORKFLOW}
           token: ${{ secrets.GH_PERSONAL_TOKEN }}
