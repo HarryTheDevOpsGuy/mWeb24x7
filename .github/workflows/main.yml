@@ -100,5 +100,5 @@ jobs:
       - name: Invoke workflow without inputs
         uses: benc-uk/workflow-dispatch@v1
         with:
-          workflow: ${{GITHUB_WORKFLOW}}
+          workflow: ${{github.workflow}}
           token: ${{ secrets.GH_PERSONAL_TOKEN }}
