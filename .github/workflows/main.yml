@@ -51,7 +51,7 @@ jobs:
         # for Debug only
         #FORCE_EMAIL_TO: HarryTheDevOpsGuy@gmail.com
         # TO read 1-10 raws from gsheet.
-        LINE_RANGE: "1,10p"
+        LINE_RANGE: "3,4!p"
         
 
     # Steps represent a sequence of tasks that will be executed as part of the job
@@ -74,7 +74,7 @@ jobs:
       - name: Check Website Status
         run: |
           chmod +x /usr/bin/mweb24x7
-          mweb24x7 -g "${GOOGLE_SHEET}" -m 2 -V 
+          mweb24x7 -g "${GOOGLE_SHEET}" -m 5 -t 2 -V 
 
           
       - name: Push changes to repo
@@ -97,8 +97,83 @@ jobs:
             echo "NO Changed"
           fi
           
+
+          
+
+  mWeb-basic-1:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: /opt
+        shell: bash
+
+    container:
+      image: harry97/mcloud-toolkit:latest
+      env:
+        SLACK_CLI_TOKEN: ${{ secrets.DEFAULT_SLACK_TOKEN }}
+        MT_0001_SLACK_CLI_TOKEN: ${{ secrets.DEFAULT_SLACK_TOKEN }}
+        SENDGRID_API_KEY: ${{ secrets.DEFAULT_SENDGRID_TOKEN }}
+        GOOGLE_SHEET: ${{ secrets.MWEB24X7_GOOGLE_SHEET }}
+        EMAIL_FROM: mcloudautomation@gmail.com
+        EMAIL_MODE: SENDGRID
+        REPLY_EMAIL_ADDRESS: 'Harry <HarryTheDevOpsGuy@gmail.com>'
+        EMAIL_NOTIFICATION: 'true'
+        SLACK_ALERT_REPEAT_INTERVAL: '120'
+        EMAIL_ALERT_REPEAT_INTERVAL: '600'
+        LOOP_REPEAT_INTERVAL: '10'
+        OUTPUT_LOG_DIR: '/tmp/logdata'
+        LOG_BRANCH: ${{env.GITHUB_JOB}}
+        # mCert variables
+        # for Debug only
+        #FORCE_EMAIL_TO: HarryTheDevOpsGuy@gmail.com
+        # TO read 1-10 raws from gsheet.
+        LINE_RANGE: "3,4p"
+        
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:     
+      - name: Clone logdata to repo
+        run: |
+          REMOTE=https://${{ secrets.GH_PERSONAL_TOKEN }}@github.com/HarryTheDevOpsGuy/logdata.git
+          git clone ${REMOTE} ${OUTPUT_LOG_DIR}
+          cd ${OUTPUT_LOG_DIR}
+          git checkout ${LOG_BRANCH} || git checkout -b ${LOG_BRANCH}
+
+      # Check Website Status
+      - name: Check Website Status
+        run: |
+          chmod +x /usr/bin/mweb24x7
+          mweb24x7 -g "${GOOGLE_SHEET}" -m 5 -t 2 -V 
+          
+      - name: Push changes to repo
+        run: |
+          set -x
+          cd ${OUTPUT_LOG_DIR}
+          REMOTE=https://${{ secrets.GH_PERSONAL_TOKEN }}@github.com/HarryTheDevOpsGuy/logdata.git
+          git config user.email "${{ github.actor }}@users.noreply.github.com"
+          git config user.name "${{ github.actor }}"
+          git pull ${REMOTE}
+          git checkout ${LOG_BRANCH}
+          git pull origin ${LOG_BRANCH}
+          git add .
+          git status
+          FCOUNT="$(git diff --name-only --cached|wc -l)"
+          if [[ ${FCOUNT} -gt 0 ]]; then
+            git commit -am "update logdata for ${LOG_BRANCH}"
+            git push ${REMOTE} ${LOG_BRANCH} 
+          else 
+            echo "NO Changed"
+          fi
+  
+  # Final Job to trigger workflow
+  TriggerWorkflow:
+    if: always()
+    needs: [mWeb-basic, mWeb-basic-1]
+    runs-on: ubuntu-latest
+    steps:
       - name: Invoke workflow without inputs
         uses: benc-uk/workflow-dispatch@v1
         with:
           workflow: ${{github.workflow}}
           token: ${{ secrets.GH_PERSONAL_TOKEN }}
+
