@@ -44,7 +44,7 @@ jobs:
         EMAIL_NOTIFICATION: 'true'
         SLACK_ALERT_REPEAT_INTERVAL: '120'
         EMAIL_ALERT_REPEAT_INTERVAL: '600'
-        LOOP_REPEAT_INTERVAL: '20'
+        LOOP_REPEAT_INTERVAL: '60'
         OUTPUT_LOG_DIR: '/tmp/logdata'
         LOG_BRANCH: mweb24x7
         # mCert variables
@@ -121,7 +121,7 @@ jobs:
         EMAIL_NOTIFICATION: 'true'
         SLACK_ALERT_REPEAT_INTERVAL: '120'
         EMAIL_ALERT_REPEAT_INTERVAL: '600'
-        LOOP_REPEAT_INTERVAL: '20'
+        LOOP_REPEAT_INTERVAL: '60'
         OUTPUT_LOG_DIR: '/tmp/logdata'
         LOG_BRANCH: ${{github.job}}
         # mCert variables
