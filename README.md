@@ -1,7 +1,7 @@
 #### What is mWeb24x7 ?
 mWeb24x7 is small utility by which we can we monitor any website status. if site is down we can trigger email( mSend) or slack.  
 
-#### How To Install/Setup mTrack Script on ubuntu.
+#### How to install ? 
 it can be install on any linux machine.
 
 ##### Step 1: Install Script.
