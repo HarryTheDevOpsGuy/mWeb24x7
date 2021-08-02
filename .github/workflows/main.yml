@@ -119,8 +119,10 @@ jobs:
         EMAIL_MODE: SENDGRID
         REPLY_EMAIL_ADDRESS: 'Harry <HarryTheDevOpsGuy@gmail.com>'
         EMAIL_NOTIFICATION: 'true'
+        # In minutes
         SLACK_ALERT_REPEAT_INTERVAL: '120'
-        EMAIL_ALERT_REPEAT_INTERVAL: '600'
+        EMAIL_ALERT_REPEAT_INTERVAL: '30'
+        # In Seconds
         LOOP_REPEAT_INTERVAL: '60'
         OUTPUT_LOG_DIR: '/tmp/logdata'
         LOG_BRANCH: ${{github.job}}
