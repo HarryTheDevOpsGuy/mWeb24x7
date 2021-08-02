@@ -122,6 +122,7 @@ jobs:
         # In minutes
         SLACK_ALERT_REPEAT_INTERVAL: '120'
         EMAIL_ALERT_REPEAT_INTERVAL: '30'
+        MAX_REPEAT_ALERTS: '5' # 5 Duplicate emails
         # In Seconds
         LOOP_REPEAT_INTERVAL: '60'
         OUTPUT_LOG_DIR: '/tmp/logdata'
