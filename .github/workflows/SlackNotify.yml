@@ -17,10 +17,11 @@ jobs:
 #         SLACK_COLOR: danger
 #         SLACK_ICON: 'https://github.com/rtCamp.png?size=48'
 
-    - uses: 8398a7/action-slack@v3
+    - name: Slack Notification
+      uses: 8398a7/action-slack@v3
       with:
         status: ${{ job.status }}
-        fields: repo,message,commit,author,action,eventName,ref,workflow,job,took # selectable (default: repo,message)
+        fields: repo,message,eventName,workflow,job,took # selectable (default: repo,message)
       env:
         SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }} # required
       if: always() # Pick up events even if the job fails or is canceled.
