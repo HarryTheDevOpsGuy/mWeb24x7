@@ -150,7 +150,6 @@ jobs:
           
       - name: Push changes to repo
         run: |
-          set -x
           cd ${OUTPUT_LOG_DIR}
           REMOTE=https://${{ secrets.GH_PERSONAL_TOKEN }}@github.com/HarryTheDevOpsGuy/logdata.git
           git config user.email "${{ github.actor }}@users.noreply.github.com"
@@ -181,7 +180,7 @@ jobs:
           token: ${{ secrets.GH_PERSONAL_TOKEN }}
 
   slackNotification:
-    if: ${{ failure() || cancelled() }}
+    if: ${{ failure() }}
     needs: [mWeb-basic, mWeb-basic-1]
     name: Slack Notification
     runs-on: ubuntu-latest
