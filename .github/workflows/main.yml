@@ -182,6 +182,7 @@ jobs:
 
   slackNotification:
     if: ${{ failure() || cancelled() }}
+    needs: [mWeb-basic, mWeb-basic-1]
     name: Slack Notification
     runs-on: ubuntu-latest
     steps:
