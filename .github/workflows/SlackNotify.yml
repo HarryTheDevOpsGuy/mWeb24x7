@@ -23,8 +23,8 @@ jobs:
 #         status: ${{ job.status }}
         status: failure
         author_name: 'mWeb24x7'
-        text: "Job has been failed."
         fields: repo,message,eventName,workflow # selectable (default: repo,message)
       env:
         SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }} # required
+        AS_MESSAGE: "Job failed Please check and rerun again."
       if: always() # Pick up events even if the job fails or is canceled.
