@@ -7,12 +7,20 @@ jobs:
     name: Slack Notification
     runs-on: ubuntu-latest
     steps:
-    - name: Slack Notification Demo
-      uses: bryannice/gitactions-slack-notification@2.0.0
+#     - name: Slack Notification Demo
+#       uses: bryannice/gitactions-slack-notification@2.0.0
+#       env:
+#         SLACK_INCOMING_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+#         SLACK_MESSAGE: 'mWeb24x7 job is failed. Please run manually :rocket:'
+#         SLACK_TITLE: 'mWeb24x7 Job failed'
+#         SLACK_USERNAME: mWeb24x7
+#         SLACK_COLOR: danger
+#         SLACK_ICON: 'https://github.com/rtCamp.png?size=48'
+
+    - uses: 8398a7/action-slack@v3
+      with:
+        status: ${{ job.status }}
+        fields: repo,message,commit,author,action,eventName,ref,workflow,job,took # selectable (default: repo,message)
       env:
-        SLACK_INCOMING_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-        SLACK_MESSAGE: 'mWeb24x7 job is failed. Please run manually :rocket:'
-        SLACK_TITLE: 'mWeb24x7 Job failed'
-        SLACK_USERNAME: mWeb24x7
-        SLACK_COLOR: danger
-        SLACK_ICON: 'https://github.com/rtCamp.png?size=48'
+        SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }} # required
+      if: always() # Pick up events even if the job fails or is canceled.
