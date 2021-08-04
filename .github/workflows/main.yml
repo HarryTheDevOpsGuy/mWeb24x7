@@ -181,7 +181,7 @@ jobs:
           token: ${{ secrets.GH_PERSONAL_TOKEN }}
 
   slackNotification:
-    if: failure()
+    if: failure() or cancelled()
     name: Slack Notification
     runs-on: ubuntu-latest
     steps:
