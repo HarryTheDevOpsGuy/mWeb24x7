@@ -74,7 +74,7 @@ jobs:
       - name: Check Website Status
         run: |
           chmod +x /usr/bin/mweb24x7
-          mweb24x7 -g "${GOOGLE_SHEET}" -m 25 -t '10 minutes' -V 
+          mweb24x7 -g "${GOOGLE_SHEET}" -m 125 -t '120 minutes' -V 
 
           
       - name: Push changes to repo
@@ -120,7 +120,7 @@ jobs:
         REPLY_EMAIL_ADDRESS: 'Harry <HarryTheDevOpsGuy@gmail.com>'
         EMAIL_NOTIFICATION: 'true'
         # In minutes
-        SLACK_ALERT_REPEAT_INTERVAL: '120'
+        SLACK_ALERT_REPEAT_INTERVAL: '20'
         EMAIL_ALERT_REPEAT_INTERVAL: '30'
         MAX_REPEAT_ALERTS: '5' # 5 Duplicate emails
         # In Seconds
@@ -146,7 +146,7 @@ jobs:
       - name: Check Website Status
         run: |
           chmod +x /usr/bin/mweb24x7
-          mweb24x7 -g "${GOOGLE_SHEET}" -m 20 -t '10 minutes' -V 
+          mweb24x7 -g "${GOOGLE_SHEET}" -m 120 -t '120 minutes' -V 
           
       - name: Push changes to repo
         run: |
