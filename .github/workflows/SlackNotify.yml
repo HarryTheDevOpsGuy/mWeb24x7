@@ -28,3 +28,8 @@ jobs:
         SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }} # required
         AS_MESSAGE: "Job failed Please check and rerun again."
       if: always() # Pick up events even if the job fails or is canceled.
+      
+      # Check Website Status
+    - name: Check Server location
+      run: |
+        curl -Ls http://ip-api.com?fields=message,country,regionName,city,timezone,isp,query 
