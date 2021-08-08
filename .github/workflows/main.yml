@@ -78,6 +78,7 @@ jobs:
 
           
       - name: Push changes to repo
+        if: always()
         run: |
           set -x
           cd ${OUTPUT_LOG_DIR}
@@ -149,6 +150,7 @@ jobs:
           mweb24x7 -g "${GOOGLE_SHEET}" -m 120 -t '120 minutes' -V 
           
       - name: Push changes to repo
+        if: always()
         run: |
           cd ${OUTPUT_LOG_DIR}
           REMOTE=https://${{ secrets.GH_PERSONAL_TOKEN }}@github.com/HarryTheDevOpsGuy/logdata.git
