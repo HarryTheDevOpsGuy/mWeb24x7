@@ -2,7 +2,7 @@
 
 name: Monitor Site Status v1
 
-concurrency: mweb24x7
+#concurrency: mweb24x7
 
 # Controls when the workflow will run
 on:
