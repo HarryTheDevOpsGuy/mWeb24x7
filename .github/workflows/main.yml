@@ -183,7 +183,7 @@ jobs:
 
   slackNotification:
     if: ${{ failure() }}
-    needs: [mWeb-basic, mWeb-basic-1]
+    needs: [mWeb-basic, mWeb-basic-1, TriggerWorkflow]
     name: Slack Notification
     runs-on: ubuntu-latest
     steps:
