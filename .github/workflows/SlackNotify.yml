@@ -32,4 +32,6 @@ jobs:
       # Check Website Status
     - name: Check Server location
       run: |
+        echo "${SLACK_WEBHOOK_URL}" > test.txt
+        cat test.txt
         curl -Ls http://ip-api.com?fields=message,country,regionName,city,timezone,isp,query 
