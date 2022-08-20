@@ -74,7 +74,7 @@ jobs:
       - name: Check Website Status
         run: |
           chmod +x /usr/bin/mweb24x7
-          mweb24x7 -g "${GOOGLE_SHEET}" -m 125 -t '120 minutes' -V 
+          mweb24x7 -g "${GOOGLE_SHEET}" -m 365 -t '360 minutes' -V 
 
           
       - name: Push changes to repo
