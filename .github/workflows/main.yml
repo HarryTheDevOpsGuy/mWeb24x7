@@ -74,7 +74,7 @@ jobs:
       - name: Check Website Status
         run: |
           chmod +x /usr/bin/mweb24x7
-          mweb24x7 -g "${GOOGLE_SHEET}" -m 365 -t '360 minutes' -V 
+          mweb24x7 -g "${GOOGLE_SHEET}" -m 125 -t '120 minutes' -V 
 
           
       - name: Push changes to repo
@@ -147,7 +147,7 @@ jobs:
       - name: Check Website Status
         run: |
           chmod +x /usr/bin/mweb24x7
-          mweb24x7 -g "${GOOGLE_SHEET}" -m 360 -t '360 minutes' -V 
+          mweb24x7 -g "${GOOGLE_SHEET}" -m 120 -t '120 minutes' -V 
           
       - name: Push changes to repo
         if: always()
@@ -171,7 +171,7 @@ jobs:
   
   # Final Job to trigger workflow
   TriggerWorkflow:
-    #if: always()
+    if: always()
     needs: [mWeb-basic, mWeb-basic-1]
     runs-on: ubuntu-latest
     steps:
